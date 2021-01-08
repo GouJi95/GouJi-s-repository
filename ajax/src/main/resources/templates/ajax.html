@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>City</title>
+</head>
+<body>
+<form action="/ajax" method="post">
+    <select name="p" onchange="getCities()">
+        <option></option>
+        <option th:each="province:${PList}" th:text="${province.getProvince()}">四川</option>
+    </select>省
+    <select name="city">
+        <option id="c"></option>
+    </select>市
+</form>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+<script>
+  function getCities() {
+      var xmlHttp = new XMLHttpRequest();
+      xmlHttp.onreadystatechange=function () {
+          if (xmlHttp.status = 200 && xmlHttp.readyState == 4) {
+              var data = xmlHttp.responseText;
+              var obj = JSON.parse(data);
+              console.log(obj[0].city);
+              $("#c").html(obj[0].city);
+          }
+      }
+      var province = $("select[name='p'] option:selected").html();
+      xmlHttp.open("get", "/getCities?province="+province, true);
+      xmlHttp.send();
+  }
+</script>
+</html>

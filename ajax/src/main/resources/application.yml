@@ -1,0 +1,19 @@
+spring:
+#  链接数据库
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost/map?serverTimezone=GMT%2b8
+    username: root
+    password: gg42095
+#  设置thymeleaf相关属性
+  thymeleaf:
+    mode: HTML
+    encoding: UTF-8
+    cache: false
+    prefix: classpath:/templates/
+#  jpa设置
+  jpa:
+    hibernate:
+      ddl-auto: update
+      show-sql: true

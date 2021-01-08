@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Province</title>
+</head>
+<body>
+<form action="/province" method="post">
+    <div>
+        <span th:text="${msg}"></span>
+        <h3>录入省：</h3>
+        <input type="text"  name="province">
+        <input type="submit" value="创建">
+    </div>
+</form>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>City</title>
+</head>
+<body>
+<span th:text="${msg}"></span>
+<form action="/city" method="post">
+    <select name="p" >
+        <option th:each="province:${PList}" th:text="${province.getProvince()}">四川</option>
+    </select>省
+    <input type="text" name="c" size="6">市
+    <input type="submit" value="提交">
+</form>
+</body>
+</html>

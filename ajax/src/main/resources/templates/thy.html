@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Thymeleaf实现Ajax局部刷新</title>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+</head>
+<body>
+Province:
+<select id="province">
+    <option></option>
+    <option th:each="province:${provinces}" th:text="${province.province}"></option>
+</select>
+<select id="city" th:fragment="city">
+    <option th:each="city:${cities}" th:text="${city.city}"></option>
+</select>
+</body>
+<script>
+    $("#province").change(
+        function () {
+            var province = $(this).val();
+            $("#city").load("/postThy1",{province:province});
+        }
+    );
+</script>
+</html>
